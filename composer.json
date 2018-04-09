@@ -1,0 +1,22 @@
+{
+    "name": "lveven/lveven_d",
+    "description": "This package will add the helper functions dd and dump to your application.",
+    "type": "library",
+    "keywords": [
+        "lveven_d",
+        "dump"
+    ],
+    "homepage": "http://www.lveven.com",
+    "authors": [
+        {
+            "name": "lveven",
+            "email": "lvevening@163.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "files": [
+            "tools.php"
+        ]
+    }
+}
