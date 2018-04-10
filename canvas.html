@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>canvas实现验证码-lveven</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        var codeNum = 5; //自定义验证码的位数
+        var lineNum = 10;//自定义干扰线的条数
+        var spotNum = 150;//自定义干扰点的点数
+        $(function(){
+            drawCode();
+            $("#canvas").click(function(){
+                drawCode();
+            })
+        })
+        function drawCode(){
+            var canvas = document.getElementById('canvas');//获取canvas对象 
+            var context = canvas.getContext('2d');//创建2d动画 目前只支持2d动画
+            canvas.width=120;//设置canvas的宽度
+            canvas.height=40;//设置canvas的高度
+            context.strokeRect(0,0,120,40);//绘制一个矩形边框
+            var aCode = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+            for(var i=0;i < codeNum;i++){
+                var x = 20 + 20 * i;//设置文字在x轴上的位置
+                var y = 20 + Math.random() * 10;
+                var index = Math.floor(Math.random() * (aCode.length - 1));//随机产生索引值
+                var txt = aCode[index];//获取随机字符串里面的具体某一个字符
+                context.font = 'bold 20px 微软雅黑';//设置字体样式
+                context.fillStyle = getColor();//设置字体颜色
+                //context.fillText(txt,x,y); //初始版本到这里结束  升级版本加文字倾斜
+                 context.translate(x,y);
+                 var deg = 90 * Math.random() * Math.PI/180;
+                 context.rotate(deg);
+                 context.fillText(txt,0,0);
+                 //归位
+                 context.rotate(-deg);
+                 context.translate(-x,-y);
+
+            }
+            //绘制干扰线
+            for(var i=0;i< lineNum;i++){
+                context.beginPath();//开始的第一个路径
+                context.moveTo(Math.random()*120,40*Math.random());//设置干扰线的起点
+                context.lineTo(Math.random()*120,40*Math.random());//设置干扰线的终点
+                context.strokeStyle=getColor();//设置干扰线的随机颜色
+                context.stroke();//执行绘制
+            }
+            //绘制干扰点
+            for(var i=0;i<=spotNum;i++){
+                context.beginPath();
+                var x=Math.random() * 120;
+                var y= Math.random() * 40;
+                context.moveTo(x,y);
+                context.lineTo(x+1,y+1);
+                context.strokeStyle = getColor();
+                context.stroke();
+            }    
+        }
+        function getColor(){
+            var r = Math.floor(Math.random() * 255);
+            var g = Math.floor(Math.random() * 255);
+            var b = Math.floor(Math.random() * 255);
+            return "rgb("+r+","+g+","+b+")";
+        }
+    </script>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+</body>
+</html>
