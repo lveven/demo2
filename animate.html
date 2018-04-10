@@ -9,31 +9,41 @@
       html,body { margin: 0; padding: 0; } 
       #pic{
           position: absolute;
-          left:150px;
           top:130px;
-          animation: picAn 4s infinite ease-in;
+          text-align:center;
       }
       @keyframes picAn{
           from{
-              transform:rotateY(1deg);
+              transform:rotateY(0deg);
           }
           to{
             transform:rotateY(360deg);
           }
       }
       .loading{
-          background:#ccc;
           color:white;
-          height:120px;
+          height:180px;
           width:180px;
-          margin:20px auto;
+          line-height:180px;
+          border-radius:100%;
+      }
+      .left{
+         left:190px;
+         background:#666;
+         animation: picAn 4s infinite ease-in;
+      }
+      .right{
+        right:190px;
+        background:white;
+        color:#666;
+        animation: picAn 4s infinite ease-in-out;
       }
     
     .demo {
           display: flex; 
           flex-direction: row; 
           justify-content: space-around; 
-          background: black; height: 670px; 
+          background: black; height: 650px; 
      } 
      .demo0 { 
          margin-top: 40%; 
@@ -88,7 +98,7 @@
      </style>
 </head>
 <body>
-  <div class="loading water" id="pic">夏天是游泳的好季节</div> 
+  <div class="loading left water" id="pic">夏天是游泳的好季节</div> 
   <div class="demo"> 
    <div class="demo0 demo1"></div> 
    <div class="demo0 demo2"></div> 
@@ -103,5 +113,6 @@
    <div class="demo0 demo11"></div> 
    <div class="demo0 demo12"></div> 
   </div>  
+  <div class="loading right water" id="pic">夏天是游泳的好季节</div> 
  </body>
 </html>
