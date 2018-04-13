@@ -42,3 +42,19 @@
     animation-play-state：指定动画是否正在运行或已暂停，当要实现视频播放效果时使用
         a. paused：指定动画暂停；
         b. running：指定动画运行；
+
+
+ #preg.php
+ 获取下面字符串里面li下第一个a标签里面的内容
+ $str = '<ul class="author list-inline">
+    <li>
+        <a href="xxx">我养了一只狗</a><span class="split"></span>
+        <a href="/q/1010000014324744/a-1020000014363955">1 分钟前回答</a>
+    </li>
+    <li>
+        <a href="xxx">我养了一直猫</a>
+        <span class="split"></span>
+        <a href="/q/1010000014324744/a-1020000014363955">21 分钟前回答</a>
+    </li>
+</ul>';    
+   
