@@ -13,7 +13,6 @@
             "email": "lvevening@163.com"
         }
     ],
-    "minimum-stability": "dev",
     "autoload": {
         "files": [
             "tools.php"
